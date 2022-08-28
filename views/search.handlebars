@@ -1,0 +1,35 @@
+<!-- ./views/index.handlebars -->
+<div class="container mt-5">
+    <!-- search bar -->
+    <div class="row" id="search-bar">
+        <div class="col-12">
+            <form action="/search">
+                <div class="input-group mb-3">
+                    <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="Enter restaurant name to search..."
+                        aria-label="Restaurant Name..." aria-describedby="search-button">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Restaurant list -->
+    <div class="row" id="data-panel">
+        {{#each restaurants}}
+        <div class="col-sm-3">
+            <a href="/restaurants/{{this.id}}" class="text-secondary">
+                <div class="card mb-2">
+                    <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                    <div class="card-body restaurant-item-body">
+                        <h6 class="card-title">{{this.name}} <br> {{this.name_en}}</h6>
+                        <p>分類 : {{this.category}}</p>
+                        <p>評分 : {{this.rating}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+
+    </div>
+</div>
